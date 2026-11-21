@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "LeaderboardEntry": {
+      "title": "LeaderboardEntry",
+      "description": "Verified personal-best step count submitted by a solver for a specific puzzle.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the solver.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Public workshop handle shown on the leaderboard (no PII).",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "puzzleId": {
+          "type": "integer",
+          "description": "Puzzle identifier in the range 1 to 1000."
+        },
+        "steps": {
+          "type": "integer",
+          "description": "Verified instruction count used to solve the puzzle."
+        },
+        "parSteps": {
+          "type": "integer",
+          "description": "Reference par step count for the puzzle."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the entry was first recorded."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the entry was last improved."
+        }
+      },
+      "required": [
+        "uid",
+        "displayName",
+        "puzzleId",
+        "steps",
+        "parSteps",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/leaderboardEntries/{entryId}": {
+      "schema": {
+        "$ref": "#/entities/LeaderboardEntry"
+      },
+      "description": "Public per-puzzle leaderboard scores keyed deterministically as {puzzleId}_{uid}."
+    }
+  }
+}

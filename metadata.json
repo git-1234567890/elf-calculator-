@@ -1,0 +1,6 @@
+{
+  "name": "Elf Calculator",
+  "description": "Write the shortest 48-slot register programs for 1,000 workshop arithmetic puzzles, scan math notes with AI, and consult the optimization assistant.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
